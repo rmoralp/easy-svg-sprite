@@ -6,6 +6,9 @@
   "scripts": {
     "easy-sprite": "node ./bin/easy-svg-sprite.js"
   },
+  "bin": {
+    "easy-sprite": "./bin/easy-svg-sprite.js"
+  },
   "keywords": [],
   "repository": {
     "type": "git",
