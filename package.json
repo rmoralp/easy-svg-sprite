@@ -1,0 +1,31 @@
+{
+  "name": "easy-svg-sprite",
+  "version": "1.0.0",
+  "description": "A tool that takes a bunch of icons in SVG, optimizes them and generate a SVG sprite ready for use in your website as an icon library",
+  "main": "bin/easy-svg-sprite.js",
+  "scripts": {
+    "easy-sprite": "node ./bin/easy-svg-sprite.js --inputDir='./icons'",
+    "icons:compress": "svgo ./icons/*.svg --config=svgo.json",
+    "icons:sprite": "spritesh -i ./icons -o ./icons/sprite.svg -p icon-",
+    "icons:build": "npm run icons:compress && npm run icons:sprite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rmoralp/easy-svg-sprite.git"
+  },
+  "author": {
+    "name": "Rafa Moral",
+    "email": "rafamp89@gmail.com",
+    "url": "https://github.com/rmoralp"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rmoralp/easy-svg-sprite/issues"
+  },
+  "homepage": "https://github.com/rmoralp/easy-svg-sprite#readme",
+  "dependencies": {
+    "commander": "^2.19.0",
+    "spritesh": "^1.2.1",
+    "svgo": "^1.1.1"
+  }
+}
