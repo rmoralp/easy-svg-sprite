@@ -1,6 +1,6 @@
 {
   "name": "easy-svg-sprite",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A tool that takes a bunch of icons in SVG, optimizes them and generate a SVG sprite ready for use in your website as an icon library",
   "main": "bin/easy-svg-sprite.js",
   "scripts": {
