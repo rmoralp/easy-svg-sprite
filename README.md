@@ -1,4 +1,4 @@
-# easy-svg-sprite (WIP)
+# easy-svg-sprite
 
 This package has been created thinking about improving the creation of icons sprites.
 
