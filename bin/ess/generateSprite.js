@@ -1,7 +1,7 @@
-const path = require('path');
+const {resolve, basename, extname} = require('path');
 const fs = require('fs-extra');
 const cheerio = require('cheerio');
-const helpers = require('../helpers')
+const {readSrcFolder, filterSvgFile, removeFile} = require('../helpers')
 
 function generateSprite(inputDir, outputPath) {
   const SPRITE_NAME = 'ess-sprite.svg'
@@ -56,20 +56,20 @@ function generateSprite(inputDir, outputPath) {
   }
 
   const processFile = file => {
-    const filePath = path.resolve(SRC_FOLDER, file)
-    const fileName = path.basename(file, path.extname(file))
+    const filePath = resolve(SRC_FOLDER, file)
+    const fileName = basename(file, extname(file))
     const wrapContent = wrapFile.bind(null, fileName)
 
     return fs.readFile(filePath, 'utf8').then(wrapContent)
   }
 
-  const readSrcFolder = () => {
-    return helpers.readSrcFolder(SRC_FOLDER)
+  const readFolder = () => {
+    return readSrcFolder(SRC_FOLDER)
   }
 
   const processFiles = files => {
     const processedFiles = files
-      .filter(helpers.filterSvgFile)
+      .filter(filterSvgFile)
       .map(processFile)
 
     return Promise.all(processedFiles)
@@ -94,8 +94,8 @@ function generateSprite(inputDir, outputPath) {
     throw err
   }
 
-  return helpers.removeFile(DEST_FILE)
-    .then(readSrcFolder)
+  return removeFile(DEST_FILE)
+    .then(readFolder)
     .then(processFiles)
     .then(getSpriteContent)
     .then(writeDestFile)

@@ -1,14 +1,16 @@
 #!/usr/bin/env node
 
 const program = require('commander')
-const path = require('path')
+const {resolve} = require('path')
 const rimraf = require('rimraf')
+const pkg = require('../package.json')
+const version = pkg.version
 
 const optimizeFiles = require('./ess/optimizeFiles')
 const generateSprite = require('./ess/generateSprite')
 
 program
-  .version('0.0.1')
+  .version(version, ' --version')
   .option('-P, --pineapple <string>', 'Add pineapple')
   .option(
     '-I, --inputDir <string>',
@@ -29,9 +31,9 @@ const DEFAULT_INPUT_DIR = './icons'
 const TEM_DIR = './ess'
 const DEFAULT_OUTPUT_DIR = './'
 
-const inputPath = path.resolve(inputDir || DEFAULT_INPUT_DIR)
-const tempPath = path.resolve(TEM_DIR)
-const outputPath = path.resolve(outputDir || DEFAULT_OUTPUT_DIR)
+const inputPath = resolve(inputDir || DEFAULT_INPUT_DIR)
+const tempPath = resolve(TEM_DIR)
+const outputPath = resolve(outputDir || DEFAULT_OUTPUT_DIR)
 
 const cleanTempFolder = () => rimraf.sync(tempPath)
 
