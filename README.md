@@ -24,7 +24,7 @@ Options:
 
   --version : Version
   -I INPUT, --input=INPUT : Input directory, where the .cvg icons are (by default ./icons directory)
-  -o OUTPUT, --output=OUTPUT : Output folder (by default the current path)
+  -O OUTPUT, --output=OUTPUT : Output folder (by default the current path)
 ```
 
 ### Examples
